@@ -12,8 +12,8 @@ namespace XFGoogleMapSample
 		{
 			InitializeComponent();
 
-			ITileLayer osmTile  = null;
-			ITileLayer jgsiTile = null;
+			TileLayer osmTile  = null;
+			TileLayer jgsiTile = null;
 
 			// OSM Tile
 			buttonAddOSMTile.Clicked += (sender, e) =>
