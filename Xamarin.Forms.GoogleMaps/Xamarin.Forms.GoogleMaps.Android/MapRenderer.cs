@@ -760,7 +760,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 			if (_tileLayers == null)
 				_tileLayers = new List<ATileOverlay>();
 
-			_tileLayers.AddRange(tileLayers.Cast<ITileLayerInternal>().Select(tileLayer =>
+			_tileLayers.AddRange(tileLayers.Cast<ITileLayer>().Select(tileLayer =>
 			{
 				var opts = new TileOverlayOptions();
 
@@ -778,7 +778,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 				var nativeTileOverlay = map.AddTileOverlay(opts.InvokeTileProvider(nativeTileProvider));
 
 				// associate pin with marker for later lookup in event handlers
-				tileLayer.Id = nativeTileOverlay;
+                tileLayer.NativeObject = nativeTileOverlay;
 				return nativeTileOverlay;
 			}));
 		}
@@ -791,9 +791,9 @@ namespace Xamarin.Forms.GoogleMaps.Android
 			if (_tileLayers == null)
 				return;
 
-			foreach (ITileLayerInternal tileLayer in tileLayers)
+			foreach (ITileLayer tileLayer in tileLayers)
 			{
-				var atileLayer = _tileLayers.FirstOrDefault(m => ((ATileOverlay)tileLayer.Id).Id == m.Id);
+                var atileLayer = _tileLayers.FirstOrDefault(m => ((ATileOverlay)tileLayer.NativeObject).Id == m.Id);
 				if (atileLayer == null)
 					continue;
 				atileLayer.Remove();

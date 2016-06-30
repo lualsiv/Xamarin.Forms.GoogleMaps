@@ -559,7 +559,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
 
 		void AddTileLayers(IList tileLayers)
 		{
-			foreach (ITileLayerInternal tileLayer in tileLayers)
+			foreach (ITileLayer tileLayer in tileLayers)
 			{
 				ATileLayer nativeTileLayer;
 
@@ -580,7 +580,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
 					});
 				}
 
-				tileLayer.Id = nativeTileLayer;
+                tileLayer.NativeObject = nativeTileLayer;
 				nativeTileLayer.Map = (MapView)Control;
 			}
 		}
@@ -588,7 +588,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
 		void RemoveTileLayers(IList tileLayers)
 		{
 			foreach (object obj in tileLayers)
-				((ATileLayer)((ITileLayerInternal)obj).Id).Map = null;
+				((ATileLayer)((ITileLayer)obj).NativeObject).Map = null;
 		}
 
         void UpdateHasScrollEnabled()

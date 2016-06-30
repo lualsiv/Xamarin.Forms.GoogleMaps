@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Xamarin.Forms.GoogleMaps
 {
-	public class UrlTileLayer : ITileLayer, ITileLayerInternal
+    public class UrlTileLayer : ITileLayer
 	{
 		private Func<int, int, int, Uri> _makeTileUri;
 		public Func<int, int, int, Uri> MakeTileUri 
@@ -11,7 +11,7 @@ namespace Xamarin.Forms.GoogleMaps
 
 		public object Tag { get; set; }
 
-		object ITileLayerInternal.Id { get; set; }
+		public object NativeObject { get; set; }
 
 		public UrlTileLayer(Func<int, int, int, Uri> makeTileUri)
 		{

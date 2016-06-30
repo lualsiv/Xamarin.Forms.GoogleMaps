@@ -3,7 +3,7 @@ using Android.Gms.Maps.Model;
 
 namespace Xamarin.Forms.GoogleMaps.Android
 {
-	public class NUrlTileLayer : UrlTileProvider
+	class NUrlTileLayer : UrlTileProvider
 	{
 		private static int tileWidth = 256;
 		private static int tileHeight = 256;
