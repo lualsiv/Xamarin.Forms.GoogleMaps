@@ -42,7 +42,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                     ((ObservableCollection<Polyline>)mapModel.Polylines).CollectionChanged -= OnPolylineCollectionChanged;
                     ((ObservableCollection<Polygon>)mapModel.Polygons).CollectionChanged -= OnPolygonCollectionChanged;
                     ((ObservableCollection<Circle>)mapModel.Circles).CollectionChanged -= OnCircleCollectionChanged;
-					((ObservableCollection<ITileLayer>)mapModel.TileLayers).CollectionChanged -= OnTileLayerCollectionChanged;
+					((ObservableCollection<TileLayer>)mapModel.TileLayers).CollectionChanged -= OnTileLayerCollectionChanged;
                 }
 
                 var mkMapView = (MapView)Control;
@@ -106,7 +106,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
                 ((ObservableCollection<Circle>)mapModel.Circles).CollectionChanged += OnCircleCollectionChanged;
                 OnCircleCollectionChanged(((Map)Element).Circles, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
 
-				((ObservableCollection<ITileLayer>)mapModel.TileLayers).CollectionChanged += OnTileLayerCollectionChanged;
+				((ObservableCollection<TileLayer>)mapModel.TileLayers).CollectionChanged += OnTileLayerCollectionChanged;
 				OnTileLayerCollectionChanged(((Map)Element).TileLayers, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));			
 			}
         }
@@ -559,7 +559,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
 
 		void AddTileLayers(IList tileLayers)
 		{
-			foreach (ITileLayer tileLayer in tileLayers)
+			foreach (TileLayer tileLayer in tileLayers)
 			{
 				ATileLayer nativeTileLayer;
 
@@ -588,7 +588,7 @@ namespace Xamarin.Forms.GoogleMaps.iOS
 		void RemoveTileLayers(IList tileLayers)
 		{
 			foreach (object obj in tileLayers)
-				((ATileLayer)((ITileLayer)obj).NativeObject).Map = null;
+				((ATileLayer)((TileLayer)obj).NativeObject).Map = null;
 		}
 
         void UpdateHasScrollEnabled()

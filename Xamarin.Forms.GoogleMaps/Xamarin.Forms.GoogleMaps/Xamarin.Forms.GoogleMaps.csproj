@@ -46,7 +46,7 @@
     <Compile Include="Circle.cs" />
     <Compile Include="Internals\MoveToRegionMessage.cs" />
     <Compile Include="SelectedPinChangedEventArgs.cs" />
-    <Compile Include="ITileLayer.cs" />
+    <Compile Include="TileLayer.cs" />
     <Compile Include="UrlTileLayer.cs" />
   </ItemGroup>
   <ItemGroup>

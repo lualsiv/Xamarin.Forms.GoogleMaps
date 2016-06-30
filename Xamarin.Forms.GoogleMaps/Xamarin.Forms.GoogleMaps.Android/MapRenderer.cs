@@ -85,7 +85,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
                 ((ObservableCollection<Polyline>)oldMapModel.Polylines).CollectionChanged -= OnPolylineCollectionChanged;
                 ((ObservableCollection<Polygon>)oldMapModel.Polygons).CollectionChanged -= OnPolygonCollectionChanged;
                 ((ObservableCollection<Circle>)oldMapModel.Circles).CollectionChanged -= OnCircleCollectionChanged;
-				((ObservableCollection<ITileLayer>)oldMapModel.TileLayers).CollectionChanged -= OnTileLayerCollectionChanged;
+				((ObservableCollection<TileLayer>)oldMapModel.TileLayers).CollectionChanged -= OnTileLayerCollectionChanged;
 
                 MessagingCenter.Unsubscribe<Map, MoveToRegionMessage>(this, MoveMessageName);
 
@@ -760,7 +760,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 			if (_tileLayers == null)
 				_tileLayers = new List<ATileOverlay>();
 
-			_tileLayers.AddRange(tileLayers.Cast<ITileLayer>().Select(tileLayer =>
+			_tileLayers.AddRange(tileLayers.Cast<TileLayer>().Select(tileLayer =>
 			{
 				var opts = new TileOverlayOptions();
 
@@ -791,7 +791,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
 			if (_tileLayers == null)
 				return;
 
-			foreach (ITileLayer tileLayer in tileLayers)
+			foreach (TileLayer tileLayer in tileLayers)
 			{
                 var atileLayer = _tileLayers.FirstOrDefault(m => ((ATileOverlay)tileLayer.NativeObject).Id == m.Id);
 				if (atileLayer == null)
@@ -816,7 +816,7 @@ namespace Xamarin.Forms.GoogleMaps.Android
                     ((ObservableCollection<Polyline>)mapModel.Polylines).CollectionChanged -= OnPolylineCollectionChanged;
                     ((ObservableCollection<Polygon>)mapModel.Polygons).CollectionChanged -= OnPolygonCollectionChanged;
                     ((ObservableCollection<Circle>)mapModel.Circles).CollectionChanged -= OnCircleCollectionChanged;
-					((ObservableCollection<ITileLayer>)mapModel.TileLayers).CollectionChanged -= OnCircleCollectionChanged;
+					((ObservableCollection<TileLayer>)mapModel.TileLayers).CollectionChanged -= OnCircleCollectionChanged;
                 }
 
                 var gmap = NativeMap;
